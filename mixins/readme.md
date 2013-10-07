@@ -38,8 +38,9 @@ A common user case is to use CSS for full screen background images. Here is an e
 Example:
 
 ```scss
-// Mobile first
 $imageUrl: "http://mydomain.com/myimage.jpg"
+
+// Mobile first
 @include responsive-bg($imageUrl, 700);
 
 @include if-wider-than(400) {
@@ -58,11 +59,11 @@ CSS output:
 ```css
 background-image: url("http://src.responsive.io/w=400/http://mydomain.com/myimage.jpg");
 
-@media (min-width: pxToEm(400)) {
+@media (min-width: 400) {
 		background-image: url("http://src.responsive.io/w=800/http://mydomain.com/myimage.jpg");
 }
 
-@media (min-width: pxToEm(800)) {
+@media (min-width: 800) {
 		background-image: url("http://src.responsive.io/w=1400/http://mydomain.com/myimage.jpg");
 }
 
