@@ -5,4 +5,4 @@ responsive.io is a service that optimizes and delivers perfect images for every 
 
 Here are some helpful tools to use the service.
 
-* Mixins: http://github.com/14islands/responsive.io/mixins
+* Mixins: https://github.com/14islands/responsive.io/tree/master/mixins
