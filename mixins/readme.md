@@ -1,7 +1,7 @@
 
 # Sass mixin
 
-Sass mixins to simplify using CSS background images on responsive.io.  Mixins for other CSS-preprocessor might be provide later but anyone is  welcome to make pull requests to this repository.
+Sass mixins to simplify using CSS background images on responsive.io.  Mixins for other CSS-preprocessor might be provided later, anyone is  also welcome to make pull requests to this repository.
 
 
 ## Background image mixin
