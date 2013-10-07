@@ -1,5 +1,5 @@
 
-# Sass mixin
+# Mixins
 
 Sass mixins to simplify using CSS background images on responsive.io.  Mixins for other CSS-preprocessor might be provided later, anyone is  also welcome to make pull requests to this repository.
 
@@ -33,7 +33,7 @@ background-image: url("http://src.responsive.io/w=700/http://mydomain.com/myimag
 
 ## Media query mixin
 
-A common user case is to use CSS for full screen background images. Here is an example on how that might work using the **if-wider-then** mixin.
+A common use case is to use CSS for full screen background images. Here is an example on how that might work using the **if-wider-then** mixin.
 
 Example:
 
