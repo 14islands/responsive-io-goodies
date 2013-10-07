@@ -1,0 +1,88 @@
+/*
+ * Load background image via responsive.io
+ * Automatically includes retina version
+ *
+ * @example
+ * @include responsive-background("http://mydomain.com/image.jpg", 1800);
+ */
+@mixin responsive-bg($imageUrl, $imageWidth, $detectRetina: true) {
+	background-image: url("http://src.responsive.io/w=#{$imageWidth}/#{$imageUrl}");
+	@if $detectRetina {
+		@include if-retina {
+			background-image: url("http://src.responsive.io/w=#{$imageWidth}/pr=2/#{$imageUrl}");
+		}
+	}	
+}
+
+/* 
+* Breakpoint wider than number of pixels
+*
+* @example
+* @include if-wider-than(960) { color: hotpink; }	
+*
+*/
+@mixin if-wider-than($px) {
+	@media (min-width: $px) {
+		@content;
+	}
+}
+
+/*
+* Apply styles for retina only
+*
+* @example
+* @include if-retina { color: hot-pink; }
+*
+*/
+@mixin if-retina {
+	@include if-min-resolution(1.5) {
+		@content;
+	}	
+}
+
+/*
+* Apply styles for non-retina
+*
+* @example
+* @include unless-retina { color: hot-pink; }
+*
+*/
+@mixin unless-retina {
+	@include if-max-resolution(1.49) {
+		@content;
+	}
+}
+
+/*	
+* Function to output a future proof min-resolution media query
+*
+* Inspired by:
+*		- http://alwaystwisted.com/post.php?s=2012-08-06-a-mixin-for-media-queries-and-ie
+*		- http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio/
+*		- http://css-tricks.com/snippets/css/retina-display-media-query/
+*/
+@mixin if-resolution($prefix, $dppx) {
+	// 1px = 96dpi
+	$dpi: $dppx * 96;
+	@media
+		(-webkit-#{$prefix}-device-pixel-ratio: #{$dppx}),
+		(   #{$prefix}--moz-device-pixel-ratio: #{$dppx}),
+		(     -o-#{$prefix}-device-pixel-ratio: #{$dppx*2}/2),
+		(        #{$prefix}-device-pixel-ratio: #{$dppx}),
+		(                #{$prefix}-resolution: #{$dpi}dpi),
+		(                #{$prefix}-resolution: #{$dppx}dppx) { 
+	  	@content;
+  }
+}
+
+@mixin if-min-resolution($dppx) {
+	@include if-resolution(min, $dppx) {
+		@content;
+	}
+}
+
+@mixin if-max-resolution($dppx) {
+	@include if-resolution(max, $dppx) {
+		@content;
+	}
+}
